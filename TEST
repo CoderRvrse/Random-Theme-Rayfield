@@ -1,0 +1,158 @@
+-- Made by:Яvrse Load Test Gui/Rayfield Library
+local RayfieldLibrary = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+
+local themes = {}
+
+
+if RayfieldLibrary and RayfieldLibrary.Theme then
+    for themeName, _ in pairs(RayfieldLibrary.Theme) do
+        table.insert(themes, themeName)
+    end
+end
+
+
+local function randomColorFromPalette()
+    
+    local palettes = {
+        -- Dark Themes
+        {Type = "Dark", Primary = Color3.fromRGB(40, 40, 120), Accent = Color3.fromRGB(120, 160, 200), Secondary = Color3.fromRGB(80, 120, 180)},
+        {Type = "Dark", Primary = Color3.fromRGB(120, 40, 40), Accent = Color3.fromRGB(200, 120, 120), Secondary = Color3.fromRGB(180, 80, 80)},
+        {Type = "Dark", Primary = Color3.fromRGB(40, 120, 40), Accent = Color3.fromRGB(120, 200, 120), Secondary = Color3.fromRGB(80, 180, 80)},
+        -- Light Themes
+        {Type = "Light", Primary = Color3.fromRGB(240, 240, 240), Accent = Color3.fromRGB(200, 200, 220), Secondary = Color3.fromRGB(220, 220, 240)},
+        {Type = "Light", Primary = Color3.fromRGB(250, 250, 250), Accent = Color3.fromRGB(230, 200, 170), Secondary = Color3.fromRGB(240, 220, 200)},
+        {Type = "Light", Primary = Color3.fromRGB(255, 255, 240), Accent = Color3.fromRGB(200, 230, 190), Secondary = Color3.fromRGB(220, 240, 210)},
+        -- Neutral Themes (In-Between)
+        {Type = "Neutral", Primary = Color3.fromRGB(160, 180, 200), Accent = Color3.fromRGB(120, 150, 180), Secondary = Color3.fromRGB(190, 210, 230)}, -- Dusty Blue
+        {Type = "Neutral", Primary = Color3.fromRGB(180, 200, 180), Accent = Color3.fromRGB(150, 170, 150), Secondary = Color3.fromRGB(200, 220, 200)}, -- Pastel Green
+        {Type = "Neutral", Primary = Color3.fromRGB(200, 180, 200), Accent = Color3.fromRGB(180, 150, 180), Secondary = Color3.fromRGB(220, 200, 220)}, -- Soft Lavender
+        {Type = "Neutral", Primary = Color3.fromRGB(220, 200, 180), Accent = Color3.fromRGB(200, 170, 150), Secondary = Color3.fromRGB(240, 220, 200)}, -- Warm Beige
+        {Type = "Neutral", Primary = Color3.fromRGB(150, 180, 180), Accent = Color3.fromRGB(130, 160, 160), Secondary = Color3.fromRGB(170, 200, 200)}, -- Muted Teal
+    }
+
+    
+    return palettes[math.random(1, #palettes)]
+end
+
+
+local function ensureContrast(foreground, background)
+    local function luminance(color)
+        local r, g, b = color.R, color.G, color.B
+        local function linearize(c)
+            return c <= 0.03928 and c / 12.92 or ((c + 0.055) / 1.055) ^ 2.4
+        end
+        return 0.2126 * linearize(r) + 0.7152 * linearize(g) + 0.0722 * linearize(b)
+    end
+
+    local fgLum = luminance(foreground)
+    local bgLum = luminance(background)
+    local contrastRatio = (math.max(fgLum, bgLum) + 0.05) / (math.min(fgLum, bgLum) + 0.05)
+
+    return contrastRatio >= 4.5 -- Return true if contrast is acceptable
+end
+
+
+local function generateRandomTheme()
+    local palette = randomColorFromPalette()
+
+    
+    local textColor = palette.Accent
+    while not ensureContrast(textColor, palette.Primary) do
+        textColor = Color3.fromRGB(0, 0, 0) -- Default to black if contrast fails for light themes
+        if palette.Type == "Dark" then
+            textColor = Color3.fromRGB(255, 255, 255) -- Default to white for dark themes
+        end
+    end
+
+    return {
+        TextColor = textColor,
+
+        Background = palette.Primary,
+        Topbar = palette.Secondary,
+        Shadow = palette.Accent,
+
+        NotificationBackground = palette.Secondary,
+        NotificationActionsBackground = Color3.fromRGB(230, 230, 230),
+
+        TabBackground = palette.Primary,
+        TabStroke = palette.Accent,
+        TabBackgroundSelected = palette.Accent,
+        TabTextColor = palette.Accent,
+        SelectedTabTextColor = palette.Secondary,
+
+        ElementBackground = palette.Secondary,
+        ElementBackgroundHover = palette.Accent,
+        SecondaryElementBackground = palette.Primary,
+        ElementStroke = palette.Accent,
+        SecondaryElementStroke = palette.Secondary,
+
+        SliderBackground = palette.Primary,
+        SliderProgress = palette.Accent,
+        SliderStroke = palette.Secondary,
+
+        ToggleBackground = palette.Primary,
+        ToggleEnabled = palette.Accent,
+        ToggleDisabled = palette.Secondary,
+        ToggleEnabledStroke = palette.Accent,
+        ToggleDisabledStroke = palette.Secondary,
+        ToggleEnabledOuterStroke = palette.Primary,
+        ToggleDisabledOuterStroke = palette.Secondary,
+
+        DropdownSelected = palette.Accent,
+        DropdownUnselected = palette.Secondary,
+
+        InputBackground = palette.Secondary,
+        InputStroke = palette.Accent,
+        PlaceholderColor = Color3.fromRGB(178, 178, 178)
+    }
+end
+
+
+local useCustomTheme = math.random() < 0.7 
+local randomTheme = useCustomTheme and generateRandomTheme() or themes[math.random(1, #themes)]
+
+
+local Window = RayfieldLibrary:CreateWindow({
+    Name = "Random Theme GUI",
+    LoadingTitle = "Loading Random Features...",
+    LoadingSubtitle = "Code Яvrse Repeat 🔁 ",
+    Theme = randomTheme,
+    DisableRayfieldPrompts = false,
+    DisableBuildWarnings = false,
+    ConfigurationSaving = {
+       Enabled = true,
+       FolderName = "RayfieldDemos",
+       FileName = "FeatureDemo"
+    }
+})
+
+
+RayfieldLibrary:Notify({
+    Title = "Random Theme Applied!",
+    Content = useCustomTheme 
+        and "Your Rayfield GUI loaded with a custom random theme Made By: Яvrse" 
+        or ("Your Rayfield GUI loaded with the Rayfield theme:" .. randomTheme),
+    Duration = 5,
+    Image = 4483362458
+})
+
+
+local Tab = Window:CreateTab("Made By: Яvrse", "rewind")
+
+
+Tab:CreateSection("Basic Elements")
+Tab:CreateButton({Name = "Test Button", Callback = function() print("Button pressed!") end})
+Tab:CreateToggle({Name = "Test Toggle", CurrentValue = false, Callback = function(Value) print("Toggle:", Value) end})
+Tab:CreateColorPicker({Name = "Test Color Picker", Color = Color3.fromRGB(255, 255, 255), Callback = function(Color) print("Selected Color:", Color) end})
+Tab:CreateSlider({Name = "Test Slider", Range = {0, 100}, Increment = 1, CurrentValue = 50, Callback = function(Value) print("Slider Value:", Value) end})
+Tab:CreateInput({Name = "Test Input", PlaceholderText = "Enter text...", Callback = function(Text) print("Input Text:", Text) end})
+Tab:CreateDropdown({Name = "Test Dropdown", Options = {"Option 1", "Option 2"}, Callback = function(Option) print("Selected Option:", Option) end})
+
+
+Tab:CreateDivider()
+
+
+Tab:CreateSection("Additional Features")
+Tab:CreateButton({Name = "Show Notification", Callback = function() RayfieldLibrary:Notify({Title = "Test Notification", Content = "This is a test notification Made By: Яvrse!", Duration = 5, Image = "rewind"}) end})
+Tab:CreateButton({Name = "Destroy GUI", Callback = function() RayfieldLibrary:Destroy() end})
