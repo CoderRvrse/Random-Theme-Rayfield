@@ -133,7 +133,7 @@ RayfieldLibrary:Notify({
     Content = useCustomTheme 
         and "Your Rayfield GUI loaded with a custom random theme Made By: Яvrse" 
         or ("Your Rayfield GUI loaded with the Rayfield theme:" .. randomTheme),
-    Duration = 5,
+    Duration = 8,
     Image = 4483362458
 })
 
