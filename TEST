@@ -155,4 +155,4 @@ Tab:CreateDivider()
 
 Tab:CreateSection("Additional Features")
 Tab:CreateButton({Name = "Show Notification", Callback = function() RayfieldLibrary:Notify({Title = "Test Notification", Content = "This is a test notification Made By: Яvrse!", Duration = 5, Image = "rewind"}) end})
-Tab:CreateButton({Name = "Destroy GUI", Callback = function() RayfieldLibrary:Destroy() end})
+Tab:CreateButton({Name = "Destroy GUI", Callback = function() Rayfield:Destroy() end})
