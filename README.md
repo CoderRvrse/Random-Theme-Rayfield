@@ -40,3 +40,19 @@ Buttons, toggles, sliders, dropdowns, inputs, and color pickers – fully custom
 Copy the "TEST" script into your executor or development environment.
 Load the GUI using the Rayfield library.
 Enjoy randomly generated light or dark themes every time you run the script!
+
+🚀 Still keeping Dynamic Theme Integration with Rayfield Themes.
+By directly interfacing with the Rayfield.Theme table, this script ensures your GUI stays fresh and up-to-date:
+
+🔄 Automatic Updates: Your GUI seamlessly incorporates any new themes or updates from the Rayfield library. No manual intervention needed—ever!
+
+🛠️ Zero Maintenance: Save time and effort. When Rayfield rolls out new themes or tweaks existing ones, your GUI adapts instantly without a single change to your script.
+
+🎨 Consistent Experience: Maintain a cohesive look and feel. Your GUI remains in harmony with the latest Rayfield styles, offering users a polished and unified interface.
+Feel free to clone, fork, and contribute to make this even better. ?
+Credit Where It’s Due
+This cutting-edge approach is made possible by Яvrse.
+When you use this script, be sure to acknowledge the brilliance behind it. 
+A simple note if used:
+
+Theme Integration inspired by: Яvrse 
