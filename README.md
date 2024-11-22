@@ -56,3 +56,31 @@ When you use this script, be sure to acknowledge the brilliance behind it.
 A simple note if used:
 
 Theme Integration inspired by: Яvrse 
+# Random Theme GUI
+
+## Screenshots
+
+### Example 1: Random Theme Applied
+<p align="center">
+  <img src="https://www.flickr.com/photos/201861435@N04/54158514849/in/dateposted-public/" alt="Dynamic Theme GUI 1" width="600"/>
+</p>
+
+### Example 2: Custom Green Theme
+<p align="center">
+  <img src="https://www.flickr.com/photos/201861435@N04/54158514854/in/dateposted-public/" alt="Dynamic Theme GUI 2" width="600"/>
+</p>
+
+### Example 3: Neutral Beige Theme
+<p align="center">
+  <img src="https://www.flickr.com/photos/201861435@N04/54158514844/in/dateposted-public/" alt="Dynamic Theme GUI 3" width="600"/>
+</p>
+
+### Example 4: Light Green Theme
+<p align="center">
+  <img src="https://www.flickr.com/photos/201861435@N04/54158653755/in/dateposted-public/" alt="Dynamic Theme GUI 4" width="600"/>
+</p>
+
+### Example 5: Blue Theme
+<p align="center">
+  <img src="https://www.flickr.com/photos/201861435@N04/54157334282/in/dateposted-public/" alt="Dynamic Theme GUI 5" width="600"/>
+</p>
