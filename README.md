@@ -56,3 +56,33 @@ When you use this script, be sure to acknowledge the brilliance behind it.
 A simple note if used:
 
 Theme Integration inspired by: Яvrse 
+# Random Theme GUI
+
+This script showcases how dynamic themes are applied to a GUI using the Rayfield library. Below are examples of different themes in action:
+
+## Screenshots
+
+### Example 1: Random Theme Applied
+<p align="center">
+  <img src="images/dynamic_theme_gui_1.png" alt="Dynamic Theme GUI 1" width="600"/>
+</p>
+
+### Example 2: Custom Green Theme
+<p align="center">
+  <img src="images/dynamic_theme_gui_2.png" alt="Dynamic Theme GUI 2" width="600"/>
+</p>
+
+### Example 3: Neutral Beige Theme
+<p align="center">
+  <img src="images/dynamic_theme_gui_3.png" alt="Dynamic Theme GUI 3" width="600"/>
+</p>
+
+### Example 4: Light Green Theme
+<p align="center">
+  <img src="images/dynamic_theme_gui_4.png" alt="Dynamic Theme GUI 4" width="600"/>
+</p>
+
+### Example 5: Blue Theme
+<p align="center">
+  <img src="images/dynamic_theme_gui_5.png" alt="Dynamic Theme GUI 5" width="600"/>
+</p>
